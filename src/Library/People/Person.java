@@ -1,3 +1,5 @@
+package Library.People;
+
 import java.util.Objects;
 
 public abstract class Person {
@@ -25,5 +27,12 @@ public abstract class Person {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Library.People.Person{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

@@ -1,4 +1,7 @@
-import enums.Status;
+package Library.Books;
+
+import Library.People.Author;
+import Library.enums.Status;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -11,16 +14,18 @@ public class Book {
     private Status status;
     private String edition;
     private LocalDate dateOfPurchase;
+    private String categoryName;
     private String owner;
 
-    public Book(Long bookId, Author author, String name, double price, Status status, String edition, LocalDate dateOfPurchase, String owner) {
+    public Book(Long bookId, String author, String name, double price, Status status, String edition, LocalDate dateOfPurchase, String categoryName, String owner) {
         this.bookId = bookId;
         this.author = author;
         this.name = name;
         this.price = price;
-        this.status = status;
+        this.status = status.AVAILABLE;
         this.edition = edition;
         this.dateOfPurchase = dateOfPurchase;
+        this.categoryName = categoryName;
         this.owner = null;
     }
 
@@ -36,12 +41,20 @@ public class Book {
         return author;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
     public void changeOwner(String newOwner) {
         this.owner = newOwner;
     }
 
     public String getOwner() {
         return owner;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public void updateStatus(){
@@ -56,7 +69,7 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
@@ -80,22 +93,14 @@ public class Book {
         this.dateOfPurchase = dateOfPurchase;
     }
 
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public void setOwner(String owner) {
         this.owner = owner;
     }
 
-    public String display() {
-        return "Book{" +
-                "bookId=" + bookId +
-                ", author='" + author + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", status=" + status +
-                ", edition='" + edition + '\'' +
-                ", dateOfPurchase=" + dateOfPurchase +
-                ", owner='" + owner + '\'' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -107,5 +112,14 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(bookId, author, name);
+    }
+
+    @Override
+    public String toString() {
+        return
+                "{bookId=" + bookId +
+                ", author=" + author +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

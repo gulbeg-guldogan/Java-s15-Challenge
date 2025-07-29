@@ -1,3 +1,5 @@
+package Library.People;
+
 public class Librarian {
 
     private String name;
@@ -23,6 +25,5 @@ public class Librarian {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public 
+    
 }
